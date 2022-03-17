@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# We are Brave and Beautiful
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## :: 개요
 
-## Available Scripts
+- 본 프로젝트는 에어비앤비 클론 프로젝트입니다.
 
-In the project directory, you can run:
+## :: 목적
 
-### `npm start`
+- 구성원들의 실력 향상에 목적을 두고 있으며, 다른 구성원들의 코드를 보며 시야를 넓힙니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## :: 진행
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 스프린트는 주 단위로 진행되며, 매주 1회(목요일 오후 6시) 진행됩니다.
+- 스프린트 기간 동안 구성원은 정해진 기능을 기반으로 작업하며, 결과물을 공유합니다.
+- 스프린트 기간 동안 참여자 전원 같은 기능을 개발합니다.
+- 매주 스터디를 리딩하는 사람을 정하고, 본인(스터디 리더)의 코드를 공유하며 진행합니다.
+  - 참여자는 피어리뷰를 통해 참여.
+- 만약 과반수(4명)가 진행을 못한 경우에는 다음주로 연장합니다.
+  - 1회 연장 후에도 진행이 어렵다면 다음 기능으로 넘어갑니다.
+- 각자 기능별 브랜치 생성 후 작업합니다. (ex. dohyeon/login)
+- 결과물 공유가 끝나면 기능 상세 정의를 진행합니다.
+  - 기능 상세 정의는 최초 진행 시 2주차를 정하며, 2회차 스프린트 부터는 1주차만 정합니다.
 
-### `npm test`
+## :: 기술
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React
+- Styled-components
+- Redux
 
-### `npm run build`
+## :: 참고
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [에어비앤비](https://www.airbnb.co.kr/)
