@@ -36,6 +36,7 @@ export const TitleName = styled.span`
 
 export const UserStatusContainer = styled.div`
   ${alignCenter};
+  position: relative;
   color: white;
 `;
 
@@ -45,11 +46,22 @@ export const HostBtn = styled.button`
   font-size: 15px;
 `;
 
-export const MyStatus = styled.button`
-  ${buttonStyle('1px solid white')};
-  padding: 10px;
-  text-align: center;
+export const MyStatusBtn = styled.img`
+  padding: 5px;
+  width: 30px;
   border-radius: 20%;
+  background-color: white;
+  cursor: pointer;
+`;
+
+export const StatusModal = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 0;
+  padding: 10px;
+  width: 200px;
+  border-radius: 20px;
+  background-color: white;
   font-size: 15px;
-  font-family: 'Fredoka Medium';
+  color: black;
 `;

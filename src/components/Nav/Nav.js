@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import * as S from './Nav.style';
 
-import Modal from '../../components/Modal';
-
 const Nav = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const clickLoginBtn = () => {
@@ -17,8 +15,8 @@ const Nav = () => {
       </S.LogoContainer>
       <S.UserStatusContainer>
         <S.HostBtn>호스트되기</S.HostBtn>
-        <S.MyStatus onClick={clickLoginBtn}>M</S.MyStatus>
-        {isOpenModal && <Modal />}
+        <S.MyStatusBtn src="/images/user.png" onClick={clickLoginBtn} />
+        <S.StatusModal hidden={!isOpenModal}>모달창</S.StatusModal>
       </S.UserStatusContainer>
     </S.NavWrap>
   );
