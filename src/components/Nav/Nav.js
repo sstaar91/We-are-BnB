@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 import * as S from './Nav.style';
+import StatusModal from './StatusModal';
+import LoginModal from './LoginModal';
 
 const Nav = () => {
+  const [isOpenStatus, setIsOpenStatus] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const clickLoginBtn = () => {
-    setIsOpenModal((isOpenModal) => !isOpenModal);
+
+  const handleStatusModal = () => {
+    setIsOpenStatus(!isOpenStatus);
+  };
+
+  const handleModal = () => {
+    setIsOpenModal(!isOpenModal);
   };
 
   return (
@@ -15,9 +23,16 @@ const Nav = () => {
       </S.LogoContainer>
       <S.UserStatusContainer>
         <S.HostBtn>호스트되기</S.HostBtn>
-        <S.MyStatusBtn src="/images/user.png" onClick={clickLoginBtn} />
-        <S.StatusModal hidden={!isOpenModal}>모달창</S.StatusModal>
+        <S.MyStatusBtn onClick={handleStatusModal}>
+          <S.StatusImg src="/images/user.png" />
+          <StatusModal
+            isOpenStatus={isOpenStatus}
+            handleStatusModal={handleStatusModal}
+            handleModal={handleModal}
+          />
+        </S.MyStatusBtn>
       </S.UserStatusContainer>
+      <LoginModal isOpenModal={isOpenModal} closeModal={handleModal} />
     </S.NavWrap>
   );
 };

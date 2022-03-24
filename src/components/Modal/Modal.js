@@ -1,13 +1,13 @@
 import React from 'react';
 import * as S from './Modal.style';
 
-const Modal = ({ closeModal }) => {
+const Modal = ({ isOpenModal, closeModal, children }) => {
   return (
-    <S.ModalContainer onClick={closeModal}>
-      <S.DimmedBackground>
-        <S.ModalBox>모달창입니다</S.ModalBox>
-      </S.DimmedBackground>
-    </S.ModalContainer>
+    <S.DimmedBackground hidden={!isOpenModal} onClick={closeModal}>
+      <S.ModalContainer>
+        <S.ModalBox onClick={(e) => e.stopPropagation()}>{children}</S.ModalBox>
+      </S.ModalContainer>
+    </S.DimmedBackground>
   );
 };
 

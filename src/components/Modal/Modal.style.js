@@ -1,29 +1,28 @@
 import styled from 'styled-components';
+import { common } from 'styles';
+import { animation } from 'styles';
 
-export const ModalContainer = styled.div`
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 10;
-`;
+const { flex, fullArea } = common;
+const { popUp } = animation;
 
 export const DimmedBackground = styled.div`
-  ${({ theme }) => theme.style.flex('column', 'center')};
+  ${fullArea};
+  position: fixed;
+  z-index: 3;
+`;
+
+export const ModalContainer = styled.div`
+  ${fullArea};
+  ${flex('column', 'center')}
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   background-color: rgba(0, 0, 0, 0.25);
 `;
 
 export const ModalBox = styled.div`
   position: relative;
-  width: 40%;
-  padding: 40px;
+  padding: 20px 15px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 10px;
-  z-index: 11;
+  z-index: 4;
+  animation: ${popUp} 0.5s;
 `;

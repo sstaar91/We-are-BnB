@@ -1,16 +1,7 @@
 import styled from 'styled-components';
+import { common } from 'styles';
 
-const buttonStyle = (border = 'none') => `
-  border: ${border};
-  background-color: transparent;
-  color: white;
-  cursor: pointer;
-`;
-
-const alignCenter = () => `
-  display: flex;
-  align-items: center;
-`;
+const { alignCenter, buttonStyle } = common;
 
 export const NavWrap = styled.nav`
   ${alignCenter};
@@ -46,22 +37,13 @@ export const HostBtn = styled.button`
   font-size: 15px;
 `;
 
-export const MyStatusBtn = styled.img`
+export const MyStatusBtn = styled.div`
   padding: 5px;
-  width: 30px;
   border-radius: 20%;
   background-color: white;
   cursor: pointer;
 `;
 
-export const StatusModal = styled.div`
-  position: absolute;
-  top: 20px;
-  right: 0;
-  padding: 10px;
-  width: 200px;
-  border-radius: 20px;
-  background-color: white;
-  font-size: 15px;
-  color: black;
+export const StatusImg = styled.img`
+  width: 25px;
 `;
