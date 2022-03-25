@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import { common } from 'styles';
+import { animation } from 'styles';
 
 const { flex, buttonStyle } = common;
-
-export const LoginWrap = styled.article`
+const { spin } = animation;
+export const MyStatusWrap = styled.article`
   ${flex};
   position: relative;
   width: 500px;
@@ -16,15 +17,18 @@ export const ModalCloseBtn = styled.button`
   left: 0;
 `;
 
-export const LoginTitle = styled.h2`
+export const StatusTitle = styled.h2`
   font-size: 15px;
   font-weight: 600;
 `;
 
-export const KakaoLoginWrap = styled.div`
-  ${flex};
+export const LodingBar = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const KakaoLoginImg = styled.img`
-  cursor: pointer;
+export const LodingImg = styled.img`
+  width: 20%;
+  animation: ${spin} 1s linear infinite;
 `;

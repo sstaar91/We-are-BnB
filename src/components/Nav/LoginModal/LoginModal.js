@@ -1,15 +1,30 @@
 import React from 'react';
-import Modal from 'components/Modal';
+
+import { Modal } from 'components/common';
+import { Line } from 'components/common';
+import kakaoLogin from './KakaoData';
+
 import * as S from './LoginModal.style';
 
 const LoginModal = ({ isOpenModal, closeModal }) => {
+  const { AUTH_CODE_URL, CLIENT_ID, REDIRECT_URI, RESPONSE_TYPE } = kakaoLogin;
+  const KAKAO_URL = `${AUTH_CODE_URL}${CLIENT_ID}&${REDIRECT_URI}&${RESPONSE_TYPE}`;
+
   return (
     <Modal isOpenModal={isOpenModal} closeModal={closeModal}>
       <S.LoginWrap>
         <S.ModalCloseBtn onClick={closeModal}>X</S.ModalCloseBtn>
         <S.LoginTitle>로그인 또는 회원가입</S.LoginTitle>
       </S.LoginWrap>
-      <S.KakaoLoginBtn />
+      <Line />
+      <S.KakaoLoginWrap>
+        <a href={KAKAO_URL}>
+          <S.KakaoLoginImg
+            src="/images/kakao_login.png"
+            alt="kakao_login_button"
+          />
+        </a>
+      </S.KakaoLoginWrap>
     </Modal>
   );
 };

@@ -17,7 +17,7 @@ export const LogoContainer = styled.button`
 export const Logo = styled.span`
   font-size: 50px;
   font-family: 'Fredoka Bold';
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.brand};
 `;
 
 export const TitleName = styled.span`
@@ -39,7 +39,7 @@ export const HostBtn = styled.button`
 
 export const MyStatusBtn = styled.div`
   padding: 5px;
-  border-radius: 20%;
+  border-radius: 30%;
   background-color: white;
   cursor: pointer;
 `;

@@ -1,1 +1,1 @@
-export { default } from './StatusModal.js';
+export { default } from './StatusModal';

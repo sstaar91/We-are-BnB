@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
-import * as S from './Nav.style';
+
 import StatusModal from './StatusModal';
 import LoginModal from './LoginModal';
+import MyStatusModal from './MyStatusModal';
+
+import * as S from './Nav.style';
 
 const Nav = () => {
   const [isOpenStatus, setIsOpenStatus] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const checkLogin = sessionStorage.getItem('TOKEN');
 
   const handleStatusModal = () => {
     setIsOpenStatus(!isOpenStatus);
@@ -29,10 +34,15 @@ const Nav = () => {
             isOpenStatus={isOpenStatus}
             handleStatusModal={handleStatusModal}
             handleModal={handleModal}
+            checkLogin={checkLogin}
           />
         </S.MyStatusBtn>
       </S.UserStatusContainer>
-      <LoginModal isOpenModal={isOpenModal} closeModal={handleModal} />
+      {checkLogin ? (
+        <MyStatusModal isOpenModal={isOpenModal} closeModal={handleModal} />
+      ) : (
+        <LoginModal isOpenModal={isOpenModal} closeModal={handleModal} />
+      )}
     </S.NavWrap>
   );
 };
