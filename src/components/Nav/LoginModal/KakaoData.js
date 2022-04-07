@@ -5,13 +5,13 @@ const REDIRECT_URI = 'redirect_uri=http://localhost:3000/auth/kakao';
 const RESPONSE_TYPE = 'response_type=code';
 const GRANT_TYPE = 'grant_type=authorization_code';
 
+const KAKAO_URL = `${AUTH_CODE_URL}${CLIENT_ID}&${REDIRECT_URI}&${RESPONSE_TYPE}`;
+const TOKEN_QUERY = `${GRANT_TYPE}&${CLIENT_ID}&${REDIRECT_URI}&code=`;
+
 const kakaoLogin = {
-  AUTH_CODE_URL,
+  KAKAO_URL,
+  TOKEN_QUERY,
   AUTH_TOKEN_URL,
-  CLIENT_ID,
-  REDIRECT_URI,
-  RESPONSE_TYPE,
-  GRANT_TYPE,
 };
 
 export default kakaoLogin;

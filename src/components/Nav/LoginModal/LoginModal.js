@@ -7,8 +7,7 @@ import kakaoLogin from './KakaoData';
 import * as S from './LoginModal.style';
 
 const LoginModal = ({ isOpenModal, closeModal }) => {
-  const { AUTH_CODE_URL, CLIENT_ID, REDIRECT_URI, RESPONSE_TYPE } = kakaoLogin;
-  const KAKAO_URL = `${AUTH_CODE_URL}${CLIENT_ID}&${REDIRECT_URI}&${RESPONSE_TYPE}`;
+  const { KAKAO_URL } = kakaoLogin;
 
   return (
     <Modal isOpenModal={isOpenModal} closeModal={closeModal}>

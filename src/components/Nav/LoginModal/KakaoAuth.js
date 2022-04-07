@@ -9,7 +9,8 @@ const KakaoAuth = () => {
   const navigate = useNavigate();
   const { search } = location;
   const authCode = search.substring(search.indexOf('=') + 1);
-  const { AUTH_TOKEN_URL, GRANT_TYPE, CLIENT_ID, REDIRECT_URI } = kakaoLogin;
+  const { AUTH_TOKEN_URL, TOKEN_QUERY } = kakaoLogin;
+  const query = `${TOKEN_QUERY}${authCode}`;
 
   useEffect(() => {
     if (!authCode) return;
@@ -17,13 +18,11 @@ const KakaoAuth = () => {
   }, []);
 
   const sendCode = () => {
-    fetch(
-      `${AUTH_TOKEN_URL}${GRANT_TYPE}&${CLIENT_ID}&${REDIRECT_URI}&code=${authCode}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      }
-    )
+    fetch(`${AUTH_TOKEN_URL}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: query,
+    })
       .then((res) => res.json())
       .then((res) => {
         sessionStorage.setItem('TOKEN', res.access_token);
