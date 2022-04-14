@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ImgContainerWrap = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 `;
 
 export const ArrowBtn = styled.img`
@@ -21,7 +21,8 @@ export const ImgContainer = styled.div`
 
 export const ImgBox = styled.div`
   display: flex;
-  transition: all 0.5s ease-in-out;
+  transform: translateX(-100%);
+  transition: 0.5s all ease-in-out;
 `;
 
 export const SlideImg = styled.img`
