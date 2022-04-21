@@ -3,22 +3,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as S from './Img.style';
 
 const ImgSlide = ({ list }) => {
-  const [currentIndex, setCurrentIndex] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [newImgArr, setNewImgArr] = useState([]);
-  let nextIndex = currentIndex + 1;
-  let prevIndex = currentIndex - 1;
   const slideImageBox = useRef();
 
-  console.log(
-    '다음인덱스',
-    nextIndex,
-    '이전인덱스',
-    prevIndex,
-    '현재인덱스',
-    currentIndex
-  );
-
   const settingArr = [...list];
+
+  const nextIndex = currentIndex === list.length - 1 ? 0 : currentIndex + 1;
+  const prevIndex = currentIndex === 0 ? list.length - 2 : currentIndex - 2;
 
   useEffect(() => {
     settingArr.push(list[0]);
@@ -26,73 +18,88 @@ const ImgSlide = ({ list }) => {
     setNewImgArr(settingArr);
   }, []);
 
-  // console.log(newImgArr);
+  useEffect(() => {
+    const autoMoveImg = setInterval(() => {
+      moveRightSide();
+    }, 3000);
+
+    return () => {
+      clearInterval(autoMoveImg);
+    };
+  }, [newImgArr, currentIndex]);
+
+  const moveRightSide = () => {
+    let changeArr = [...newImgArr];
+    changeArr.shift();
+    changeArr.push(list[nextIndex]);
+    setNewImgArr(changeArr);
+    currentIndex === list.length - 1
+      ? setCurrentIndex(0)
+      : setCurrentIndex(currentIndex + 1);
+    slideImageBox.current.style.transform = `translateX(0%)`;
+    slideImageBox.current.style.transition = `none`;
+
+    setTimeout(() => {
+      slideImageBox.current.style.transform = `translateX(-100%)`;
+      slideImageBox.current.style.transition = `0.5s all ease-in-out`;
+    }, 10);
+  };
+
+  const moveLeftSide = () => {
+    let changeArr = [...newImgArr];
+    changeArr.pop();
+    changeArr.unshift(
+      prevIndex === -1 ? list[list.length - 1] : list[prevIndex]
+    );
+    setNewImgArr(changeArr);
+    currentIndex === 0
+      ? setCurrentIndex(list.length - 1)
+      : setCurrentIndex(currentIndex - 1);
+    slideImageBox.current.style.transform = `translateX(-200%)`;
+    slideImageBox.current.style.transition = `none`;
+
+    setTimeout(() => {
+      slideImageBox.current.style.transform = `translateX(-100%)`;
+      slideImageBox.current.style.transition = `0.5s all ease-in-out`;
+    }, 10);
+  };
 
   const handleImgSlide = (e) => {
     const { name } = e.target;
-    if (name === 'right') {
-      let changeArr = [...newImgArr];
-      changeArr.shift();
-      changeArr.push(newImgArr[2]);
-      setNewImgArr(changeArr);
-      if (currentIndex === 5) {
-        slideImageBox.current.style.transform = `translateX(-100%)`;
-        slideImageBox.current.style.transition = `0s all`;
-        setCurrentIndex(2);
-      } else {
-        slideImageBox.current.style.transform = `translateX(${
-          nextIndex * -100
-        }%)`;
-        slideImageBox.current.style.transition = `0.5s all ease-in-out`;
-        setCurrentIndex(currentIndex + 1);
-      }
-    }
-
-    // if (name === 'right') {
-    //   if (currentIndex === 4) {
-    //     slideImageBox.current.style.transform = `translateX(0%)`;
-    //     setCurrentIndex(0);
-    //   } else {
-    //     slideImageBox.current.style.transform = `translateX(${
-    //       nextIndex * -100
-    //     }%)`;
-    //     setCurrentIndex(currentIndex + 1);
-    //   }
-    // } else {
-    //   if (currentIndex === 0) {
-    //     slideImageBox.current.style.transform = `translateX(-400%)`;
-    //     setCurrentIndex(4);
-    //   } else {
-    //     slideImageBox.current.style.transform = `translateX(${
-    //       prevIndex * -100
-    //     }%)`;
-    //     setCurrentIndex(currentIndex - 1);
-    //   }
-    // }
+    name === 'right' ? moveRightSide() : moveLeftSide();
   };
 
   return (
-    <S.ImgContainerWrap>
-      <S.ArrowBtn
-        alt="left_slide_button"
-        name="left"
-        src="/images/arrow.png"
-        onClick={handleImgSlide}
-      />
-      <S.ImgContainer>
-        <S.ImgBox ref={slideImageBox}>
-          {newImgArr.map((src, idx) => {
-            return <S.SlideImg key={idx} alt={idx} src={src} />;
-          })}
-        </S.ImgBox>
-      </S.ImgContainer>
-      <S.ArrowBtn
-        alt="right_slide_button"
-        name="right"
-        src="/images/arrow.png"
-        onClick={handleImgSlide}
-      />
-    </S.ImgContainerWrap>
+    <>
+      <S.ImgContainerWrap>
+        <S.ArrowBtn
+          alt="left_slide_button"
+          name="left"
+          src="/images/arrow.png"
+          onClick={handleImgSlide}
+        />
+        <S.ImgContainer>
+          <S.ImgBox ref={slideImageBox}>
+            {newImgArr.map((src, idx) => {
+              return <S.SlideImg key={idx} alt={idx} src={src} />;
+            })}
+          </S.ImgBox>
+        </S.ImgContainer>
+        <S.ArrowBtn
+          alt="right_slide_button"
+          name="right"
+          src="/images/arrow.png"
+          onClick={handleImgSlide}
+        />
+      </S.ImgContainerWrap>
+      <S.DotWrap>
+        {list.map((url, index) => {
+          return (
+            <S.DotBtn key={url} id={index} check={index === currentIndex} />
+          );
+        })}
+      </S.DotWrap>
+    </>
   );
 };
 
