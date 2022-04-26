@@ -7,6 +7,7 @@ export const NavWrap = styled.nav`
   ${alignCenter};
   justify-content: space-between;
   padding: 20px 100px;
+  background-color: black;
 `;
 
 export const LogoContainer = styled.button`
