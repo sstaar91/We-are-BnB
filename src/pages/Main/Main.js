@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ImgSlide from 'components/common/ImgSlide';
+import { SearchBar } from '../../components/common';
+import { ImgSlide } from '../../components/common';
 
 const Main = () => {
   return (
     <MainWrap>
+      <SearchBar />
       <SlideArticle>
         <ImgSlide list={IMAGE_DATA} />
       </SlideArticle>
